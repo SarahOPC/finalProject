@@ -1,13 +1,16 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Logo from "../assets/LogoHRNet.jpg";
 
 const LogoImage = styled.img`
-    width: 17%;
+    width: 63%;
 `;
 
 function LogoComponent() {
     return (
-        <LogoImage src={Logo} alt="Logo HRNet" />
+        <Link to="/">
+            <LogoImage src={Logo} alt="Logo HRNet"/>
+        </Link>
     )
 }
 
