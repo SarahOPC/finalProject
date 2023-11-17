@@ -5,21 +5,21 @@ import styled from "styled-components";
 
 const BackgroundContainer = styled.div`
     background-color: #291EF4;
-    width: 75em;
-    height: 65em;
+    width: 73em;
+    height: 42em;
     display: flex;
     justify-content: center;
     margin-bottom: 2em;
     margin: 0 auto;
     border-radius: 0.5em;
     box-shadow: 0.5em 0.5em 1em rgba(0, 0, 0, 0.5);
-    }
 `;
 
 const ContainerDiv = styled.div`
     font-size: ${(props) => (props.customStyles ? props.customStyles.fontSize : "inherit")};
     text-align: ${(props) => (props.customStyles ? props.customStyles.textAlign : "inherit")};
     margin-top: ${(props) => (props.customStyles ? props.customStyles.marginTop : "inherit")};
+    color: ${(props) => (props.customStyles ? props.customStyles.color : "inherit")};
 `;
 
 function BackgroundComponent({ content, customStyles }) {
