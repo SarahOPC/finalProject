@@ -4,7 +4,7 @@ import styled from "styled-components";
 // bleu clair = #59A4F1
 
 const BackgroundContainer = styled.div`
-    background-color: #291EF4;
+    border: solid #291EF4;
     width: 73em;
     height: 42em;
     display: flex;

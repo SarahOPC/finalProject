@@ -6,17 +6,17 @@ const FormContainer = styled.form`
     height: 19em;
     display: flex;
     justify-content: space-evenly;
-    color: #FFFFFF;
+    color: #291EF4;
 `;
 
 const LeftDiv = styled.div`
-    border: 0.1em solid #59A4F1;
+    border: 0.1em solid #291EF4;
     border-radius: 0.7em;
     padding: 1em;
 `;
 
 const RightDiv = styled.div`
-    border: 0.1em solid #59A4F1;
+    border: 0.1em solid #291EF4;
     border-radius: 0.7em;
     padding: 1em;
 `;

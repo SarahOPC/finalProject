@@ -10,7 +10,7 @@ const CurrentEmployeesPageContainer = styled.div`
 
 const TableDiv = styled.div`
     position: absolute;
-    left: 33%;
+    left: 20%;
     top: 28%;
 `;
 
@@ -18,7 +18,7 @@ function CurrentEmployeesPage() {
     return (
         <CurrentEmployeesPageContainer>
             <HeaderComponent />
-            <BackgroundComponent customStyles={{fontSize: "3em", textAlign: "center", marginTop: "0.3em", color:"#FFFFFF"}} content="Visualize All Employees" />
+            <BackgroundComponent customStyles={{fontSize: "3em", textAlign: "center", marginTop: "0.3em", color:"#291EF4"}} content="Visualize All Employees" />
             <TableDiv>
                 <TableComponent />
             </TableDiv>
