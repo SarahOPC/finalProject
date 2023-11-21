@@ -1,5 +1,25 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel } from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
+
+const theme = createTheme({
+    components: {
+        TableComponent,
+        MuiTable: {
+            styleOverrides: {
+                root: {
+                    palette: {
+                        primary: {
+                            main: '#291EF4',
+                            contrastText: '#FFFFFF',
+                        },
+                        contrastThreshold: 4.5,
+                    }
+                }
+            }
+        }
+    }
+})
 
 function TableComponent() {
     const rows = [
@@ -60,101 +80,103 @@ function TableComponent() {
     }
 
     return (
-        <TableContainer>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>
-                            <TableSortLabel
-                                active={orderBy === 'firstName'}
-                                direction={orderBy === 'firstName' ? order : 'asc'}
-                                onClick={() => handleSorting('firstName')}
-                            >First Name
-                            </TableSortLabel>
-                        </TableCell>
-                        <TableCell>
-                            <TableSortLabel
-                                active={orderBy === 'lastName'}
-                                direction={orderBy === 'lastName' ? order : 'asc'}
-                                onClick={() => handleSorting('lastName')}
-                            >Last Name
-                            </TableSortLabel>
-                        </TableCell>
-                        <TableCell>
-                            <TableSortLabel
-                                active={orderBy === 'startDate'}
-                                direction={orderBy === 'startDate' ? order : 'asc'}
-                                onClick={() => handleSorting('startDate')}
-                            >Start Date
-                            </TableSortLabel>
-                        </TableCell>
-                        <TableCell>
-                            <TableSortLabel
-                                active={orderBy === 'department'}
-                                direction={orderBy === 'department' ? order : 'asc'}
-                                onClick={() => handleSorting('department')}
-                            >Department
-                            </TableSortLabel>
-                        </TableCell>
-                        <TableCell>
-                            <TableSortLabel
-                                active={orderBy === 'dob'}
-                                direction={orderBy === 'dob' ? order : 'asc'}
-                                onClick={() => handleSorting('dob')}
-                            >Date of Birth
-                            </TableSortLabel>
-                        </TableCell>
-                        <TableCell>
-                            <TableSortLabel
-                                active={orderBy === 'street'}
-                                direction={orderBy === 'street' ? order : 'asc'}
-                                onClick={() => handleSorting('street')}
-                            >Street
-                            </TableSortLabel>
-                        </TableCell>
-                        <TableCell>
-                            <TableSortLabel
-                                active={orderBy === 'city'}
-                                direction={orderBy === 'city' ? order : 'asc'}
-                                onClick={() => handleSorting('city')}
-                            >City
-                            </TableSortLabel>
-                        </TableCell>
-                        <TableCell>
-                            <TableSortLabel
-                                active={orderBy === 'state'}
-                                direction={orderBy === 'state' ? order : 'asc'}
-                                onClick={() => handleSorting('state')}
-                            >State
-                            </TableSortLabel>
-                        </TableCell>
-                        <TableCell>
-                            <TableSortLabel
-                                active={orderBy === 'zip'}
-                                direction={orderBy === 'zip' ? order : 'asc'}
-                                onClick={() => handleSorting('zip')}
-                            >Zip Code
-                            </TableSortLabel>
-                        </TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {sortedRows().map((row) => (
-                        <TableRow key={row.id}>
-                            <TableCell>{row.firstName}</TableCell>
-                            <TableCell>{row.lastName}</TableCell>
-                            <TableCell>{row.startDate}</TableCell>
-                            <TableCell>{row.department}</TableCell>
-                            <TableCell>{row.dob}</TableCell>
-                            <TableCell>{row.street}</TableCell>
-                            <TableCell>{row.city}</TableCell>
-                            <TableCell>{row.state}</TableCell>
-                            <TableCell>{row.zip}</TableCell>
+        <ThemeProvider theme={theme}>
+            <TableContainer>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>
+                                <TableSortLabel color="theme.palette.primary.main"
+                                    active={orderBy === 'firstName'}
+                                    direction={orderBy === 'firstName' ? order : 'asc'}
+                                    onClick={() => handleSorting('firstName')}
+                                >First Name
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell>
+                                <TableSortLabel
+                                    active={orderBy === 'lastName'}
+                                    direction={orderBy === 'lastName' ? order : 'asc'}
+                                    onClick={() => handleSorting('lastName')}
+                                >Last Name
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell>
+                                <TableSortLabel
+                                    active={orderBy === 'startDate'}
+                                    direction={orderBy === 'startDate' ? order : 'asc'}
+                                    onClick={() => handleSorting('startDate')}
+                                >Start Date
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell>
+                                <TableSortLabel
+                                    active={orderBy === 'department'}
+                                    direction={orderBy === 'department' ? order : 'asc'}
+                                    onClick={() => handleSorting('department')}
+                                >Department
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell>
+                                <TableSortLabel
+                                    active={orderBy === 'dob'}
+                                    direction={orderBy === 'dob' ? order : 'asc'}
+                                    onClick={() => handleSorting('dob')}
+                                >Date of Birth
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell>
+                                <TableSortLabel
+                                    active={orderBy === 'street'}
+                                    direction={orderBy === 'street' ? order : 'asc'}
+                                    onClick={() => handleSorting('street')}
+                                >Street
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell>
+                                <TableSortLabel
+                                    active={orderBy === 'city'}
+                                    direction={orderBy === 'city' ? order : 'asc'}
+                                    onClick={() => handleSorting('city')}
+                                >City
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell>
+                                <TableSortLabel
+                                    active={orderBy === 'state'}
+                                    direction={orderBy === 'state' ? order : 'asc'}
+                                    onClick={() => handleSorting('state')}
+                                >State
+                                </TableSortLabel>
+                            </TableCell>
+                            <TableCell>
+                                <TableSortLabel
+                                    active={orderBy === 'zip'}
+                                    direction={orderBy === 'zip' ? order : 'asc'}
+                                    onClick={() => handleSorting('zip')}
+                                >Zip Code
+                                </TableSortLabel>
+                            </TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {sortedRows().map((row) => (
+                            <TableRow key={row.id}>
+                                <TableCell>{row.firstName}</TableCell>
+                                <TableCell>{row.lastName}</TableCell>
+                                <TableCell>{row.startDate}</TableCell>
+                                <TableCell>{row.department}</TableCell>
+                                <TableCell>{row.dob}</TableCell>
+                                <TableCell>{row.street}</TableCell>
+                                <TableCell>{row.city}</TableCell>
+                                <TableCell>{row.state}</TableCell>
+                                <TableCell>{row.zip}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </ThemeProvider>
     )
 }
 
