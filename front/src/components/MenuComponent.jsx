@@ -8,12 +8,13 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     margin-right: 1.5em;
     padding: 0.3em 0.5em;
-    color: #291EF4;
+    color: #333333;
+    font-weight: 600;
+    border-bottom: 0.1em solid transparent;
+    transition: border-bottom 0.3s ease;
 
     &:hover {
-        background-color: #291EF4;
-        color: #FFFFFF;
-        border-radius : 0em 0.5em;
+        border-bottom : 0.1em solid #333333;
     }
 
     &:visited {

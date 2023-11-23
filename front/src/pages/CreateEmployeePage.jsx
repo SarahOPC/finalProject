@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { HeaderComponent } from "../components/HeaderComponent";
 import { FooterComponent } from "../components/FooterComponent";
-import { BackgroundComponent } from "../components/BackgroundComponent";
 import { FormComponent } from "../components/FormCreateEmployee";
 import { ButtonComponent } from "../components/ButtonComponent";
 
@@ -11,21 +10,28 @@ const CreateEmployeePageContainer = styled.div`
 
 const FormDiv = styled.div`
     position: absolute;
-    left: 23%;
-    top: 29%;
+    left: 31%;
+    top: 72%;
 `;
 
 const ButtonDiv = styled.div`
     position: absolute;
-    left: 47%;
-    top: 75%;
+    left: 77%;
+    top: 275%;
+`;
+
+const Title = styled.div`
+    color: #333333;
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-size: 1.5em;
 `;
 
 function CreateEmployeePage() {
     return (
         <CreateEmployeePageContainer>
             <HeaderComponent />
-            <BackgroundComponent customStyles={{fontSize: "3em", textAlign: "center", marginTop: "0.3em", color:"#FFFFFF"}} content="Create an Employee"/>
+            <Title>Create a new employee</Title>
             <FormDiv>
                 <FormComponent />
             </FormDiv>

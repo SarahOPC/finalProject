@@ -1,6 +1,7 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel } from "@mui/material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
+import styled from 'styled-components';
 
 const theme = createTheme({
     components: {
@@ -10,7 +11,7 @@ const theme = createTheme({
                 root: {
                     palette: {
                         primary: {
-                            main: '#291EF4',
+                            main: '#5D0486',
                             contrastText: '#FFFFFF',
                         },
                         contrastThreshold: 4.5,
@@ -20,6 +21,17 @@ const theme = createTheme({
         }
     }
 })
+
+const CustomTableCell = styled(TableCell)`
+    border-bottom: 0.1em solid #5D0486 !important; // !important is used to be sure the style is applied (vs style of material ui)
+`;
+
+const Title = styled.div`
+    color: #333333;
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-size: 1.5em;
+`;
 
 function TableComponent() {
     const rows = [
@@ -79,13 +91,24 @@ function TableComponent() {
         return rows;
     }
 
+    // sx = style for material ui
+
     return (
         <ThemeProvider theme={theme}>
+            <Title>List of current employees</Title>
             <TableContainer>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>
+                            <TableCell sx={{    lineHeight: '0.5em',
+                                                padding: '0.5em 1em',
+                                                fontWeight: '600',
+                                                borderBottom: '0.1em solid transparent',
+                                                transition: 'border-bottom 0.3s ease',
+                                                '&:hover': {
+                                                    borderBottom: '0.1em solid #5D0486',
+                                                },
+                                            }}>
                                 <TableSortLabel color="theme.palette.primary.main"
                                     active={orderBy === 'firstName'}
                                     direction={orderBy === 'firstName' ? order : 'asc'}
@@ -93,7 +116,15 @@ function TableComponent() {
                                 >First Name
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{    lineHeight: '0.5em',
+                                                padding: '0.5em 1em',
+                                                fontWeight: '600',
+                                                borderBottom: '0.1em solid transparent',
+                                                transition: 'border-bottom 0.3s ease',
+                                                '&:hover': {
+                                                    borderBottom: '0.1em solid #5D0486',
+                                                },
+                                            }}>
                                 <TableSortLabel
                                     active={orderBy === 'lastName'}
                                     direction={orderBy === 'lastName' ? order : 'asc'}
@@ -101,7 +132,15 @@ function TableComponent() {
                                 >Last Name
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{    lineHeight: '0.5em',
+                                                padding: '0.5em 1em',
+                                                fontWeight: '600',
+                                                borderBottom: '0.1em solid transparent',
+                                                transition: 'border-bottom 0.3s ease',
+                                                '&:hover': {
+                                                    borderBottom: '0.1em solid #5D0486',
+                                                },
+                                            }}>
                                 <TableSortLabel
                                     active={orderBy === 'startDate'}
                                     direction={orderBy === 'startDate' ? order : 'asc'}
@@ -109,7 +148,15 @@ function TableComponent() {
                                 >Start Date
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{    lineHeight: '0.5em',
+                                                padding: '0.5em 1em',
+                                                fontWeight: '600',
+                                                borderBottom: '0.1em solid transparent',
+                                                transition: 'border-bottom 0.3s ease',
+                                                '&:hover': {
+                                                    borderBottom: '0.1em solid #5D0486',
+                                                },
+                                            }}>
                                 <TableSortLabel
                                     active={orderBy === 'department'}
                                     direction={orderBy === 'department' ? order : 'asc'}
@@ -117,7 +164,15 @@ function TableComponent() {
                                 >Department
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{    lineHeight: '0.5em',
+                                                padding: '0.5em 1em',
+                                                fontWeight: '600',
+                                                borderBottom: '0.1em solid transparent',
+                                                transition: 'border-bottom 0.3s ease',
+                                                '&:hover': {
+                                                    borderBottom: '0.1em solid #5D0486',
+                                                },
+                                            }}>
                                 <TableSortLabel
                                     active={orderBy === 'dob'}
                                     direction={orderBy === 'dob' ? order : 'asc'}
@@ -125,7 +180,15 @@ function TableComponent() {
                                 >Date of Birth
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{    lineHeight: '0.5em',
+                                                padding: '0.5em 1em',
+                                                fontWeight: '600',
+                                                borderBottom: '0.1em solid transparent',
+                                                transition: 'border-bottom 0.3s ease',
+                                                '&:hover': {
+                                                    borderBottom: '0.1em solid #5D0486',
+                                                },
+                                            }}>
                                 <TableSortLabel
                                     active={orderBy === 'street'}
                                     direction={orderBy === 'street' ? order : 'asc'}
@@ -133,7 +196,15 @@ function TableComponent() {
                                 >Street
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{    lineHeight: '0.5em',
+                                                padding: '0.5em 1em',
+                                                fontWeight: '600',
+                                                borderBottom: '0.1em solid transparent',
+                                                transition: 'border-bottom 0.3s ease',
+                                                '&:hover': {
+                                                    borderBottom: '0.1em solid #5D0486',
+                                                },
+                                            }}>
                                 <TableSortLabel
                                     active={orderBy === 'city'}
                                     direction={orderBy === 'city' ? order : 'asc'}
@@ -141,7 +212,15 @@ function TableComponent() {
                                 >City
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{    lineHeight: '0.5em',
+                                                padding: '0.5em 1em',
+                                                fontWeight: '600',
+                                                borderBottom: '0.1em solid transparent',
+                                                transition: 'border-bottom 0.3s ease',
+                                                '&:hover': {
+                                                    borderBottom: '0.1em solid #5D0486',
+                                                },
+                                            }}>
                                 <TableSortLabel
                                     active={orderBy === 'state'}
                                     direction={orderBy === 'state' ? order : 'asc'}
@@ -149,7 +228,15 @@ function TableComponent() {
                                 >State
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{    lineHeight: '0.5em',
+                                                padding: '0.5em 1em',
+                                                fontWeight: '600',
+                                                borderBottom: '0.1em solid transparent',
+                                                transition: 'border-bottom 0.3s ease',
+                                                '&:hover': {
+                                                    borderBottom: '0.1em solid #5D0486',
+                                                },
+                                            }}>
                                 <TableSortLabel
                                     active={orderBy === 'zip'}
                                     direction={orderBy === 'zip' ? order : 'asc'}
@@ -162,15 +249,15 @@ function TableComponent() {
                     <TableBody>
                         {sortedRows().map((row) => (
                             <TableRow key={row.id}>
-                                <TableCell>{row.firstName}</TableCell>
-                                <TableCell>{row.lastName}</TableCell>
-                                <TableCell>{row.startDate}</TableCell>
-                                <TableCell>{row.department}</TableCell>
-                                <TableCell>{row.dob}</TableCell>
-                                <TableCell>{row.street}</TableCell>
-                                <TableCell>{row.city}</TableCell>
-                                <TableCell>{row.state}</TableCell>
-                                <TableCell>{row.zip}</TableCell>
+                                <CustomTableCell>{row.firstName}</CustomTableCell>
+                                <CustomTableCell>{row.lastName}</CustomTableCell>
+                                <CustomTableCell>{row.startDate}</CustomTableCell>
+                                <CustomTableCell>{row.department}</CustomTableCell>
+                                <CustomTableCell>{row.dob}</CustomTableCell>
+                                <CustomTableCell>{row.street}</CustomTableCell>
+                                <CustomTableCell>{row.city}</CustomTableCell>
+                                <CustomTableCell>{row.state}</CustomTableCell>
+                                <CustomTableCell>{row.zip}</CustomTableCell>
                             </TableRow>
                         ))}
                     </TableBody>

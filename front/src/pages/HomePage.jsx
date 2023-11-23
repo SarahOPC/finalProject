@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { HeaderComponent } from "../components/HeaderComponent";
 import { FooterComponent } from "../components/FooterComponent";
-import { BackgroundComponent } from "../components/BackgroundComponent";
 import { ButtonComponent } from "../components/ButtonComponent";
 import { useNavigate } from "react-router-dom";
 
@@ -11,8 +10,22 @@ const HomePageContainer = styled.div`
 
 const StyledButtons = styled.div`
     position: absolute;
-    left: 41%;
-    top: 68%;
+    left: 38%;
+    top: 111%;
+`;
+
+const WelcomePart = styled.div`
+    color: #444444;
+    font-weight: 600;
+    font-size: 6em;
+    text-align: center;
+    width: 9em;
+`;
+
+const WelcomeContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5em;
 `;
 
 function HomePage() {
@@ -29,11 +42,13 @@ function HomePage() {
     return (
         <HomePageContainer>
             <HeaderComponent />
-            <BackgroundComponent customStyles={{fontSize: "6em", textAlign: "center", marginTop: "1.5em"}} content="Welcome to our new version of HRNet"/>
             <StyledButtons>
                 <ButtonComponent onClick={handleNavToCreate} content="Create an Employee"></ButtonComponent>
                 <ButtonComponent onClick={handleNavToVisualize} content="List of Current Employees"></ButtonComponent>
             </StyledButtons>
+            <WelcomeContainer>
+                <WelcomePart>Welcome to our new version of HRNet</WelcomePart>
+            </WelcomeContainer>
             <FooterComponent />
         </HomePageContainer>
     )
