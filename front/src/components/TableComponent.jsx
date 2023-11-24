@@ -1,7 +1,9 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Tooltip } from "@mui/material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const theme = createTheme({
     components: {
@@ -32,6 +34,44 @@ const Title = styled.div`
     margin-bottom: 1.5em;
     font-size: 1.5em;
 `;
+
+const PageNumber = styled.div`
+    margin: 0em 1.5em;
+`;
+
+const Paging = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5em;
+    align-items: center;
+`;
+
+const ChoiceOfRowsPerPageAndResearch = styled.div`
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2em;
+`;
+
+const IWantToSee = styled.p`
+    font-weight: 600;
+    margin-left: 0.8em;
+`;
+
+const ResearchDiv = styled.div`
+    font-weight: 600;
+    
+    input {
+        border: none;
+        border-bottom: 0.1em solid transparent;
+        transition: border-bottom 0.3s ease;
+            &:hover {
+                border-bottom : 0.1em solid #333333;
+            }
+    }
+`;
+
+const rowsPerPageOptions = [10, 20, 50];
 
 function TableComponent() {
     const rows = [
@@ -93,9 +133,53 @@ function TableComponent() {
 
     // sx = style for material ui
 
+    const [page, setPage] = useState(1);
+    const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]); // By default 10 items per page
+
+    const handleChangeOfPagePrevious = () => {
+        if(page > 1) {
+            setPage(page - 1);
+        }
+    };
+
+    const sortedRowsData = sortedRows();
+
+    const handleChangeOfPageForward = () => {
+        if((page + 1) * rowsPerPage < sortedRowsData.length) {
+            setPage(page + 1);
+        }
+    }
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(1); // Coming back to the first page if change of rows per page
+    };
+
+    const displayedRows = sortedRowsData.slice();
+
     return (
         <ThemeProvider theme={theme}>
             <Title>List of current employees</Title>
+            <ChoiceOfRowsPerPageAndResearch>
+                <IWantToSee>
+                    <label htmlFor="rowsPerPageSelect">Rows per page : </label>
+                    <select
+                        id="rowsPerPageSelect"
+                        value={rowsPerPage}
+                        onChange={handleChangeRowsPerPage}
+                    >
+                        {rowsPerPageOptions.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </IWantToSee>
+                <ResearchDiv>
+                    <label htmlFor="research">Search : </label>
+                    <input type="text" id="research"/>
+                </ResearchDiv>
+            </ChoiceOfRowsPerPageAndResearch>
             <TableContainer>
                 <Table>
                     <TableHead>
@@ -247,7 +331,7 @@ function TableComponent() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {sortedRows().map((row) => (
+                        {displayedRows.map((row) => (
                             <TableRow key={row.id}>
                                 <CustomTableCell>{row.firstName}</CustomTableCell>
                                 <CustomTableCell>{row.lastName}</CustomTableCell>
@@ -263,6 +347,15 @@ function TableComponent() {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <Paging>
+                <Tooltip title='Previous page' placement="left">
+                    <FontAwesomeIcon icon={faChevronLeft} style={{color: "#5d0486", cursor:'pointer'}} onClick={handleChangeOfPagePrevious} />
+                </Tooltip>
+                <PageNumber>{page}</PageNumber>
+                <Tooltip title='Next page' placement="right">
+                    <FontAwesomeIcon icon={faChevronRight} style={{color: "#5d0486", cursor:'pointer'}} onClick={handleChangeOfPageForward}/>
+                </Tooltip>
+            </Paging>
         </ThemeProvider>
     )
 }
