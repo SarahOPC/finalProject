@@ -64,7 +64,7 @@ const ResearchDiv = styled.div`
     }
 `;
 
-const rowsPerPageOptions = [10, 20, 50];
+const rowsPerPageOptions = [5, 10, 20, 50];
 
 function TableComponent() {
     const rows = [
@@ -127,7 +127,8 @@ function TableComponent() {
     // sx = style for material ui
 
     const [page, setPage] = useState(1);
-    const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]); // By default 10 items per page
+    const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]); // By default 5 items per page
+    const [searchText, setSearchText] = useState('');
 
     const handleChangeOfPagePrevious = () => {
         if(page > 1) {
@@ -144,11 +145,29 @@ function TableComponent() {
     }
 
     const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
+        setRowsPerPage(parseInt(event.target.value, 5));
         setPage(1); // Coming back to the first page if change of rows per page
     };
 
     const displayedRows = sortedRowsData.slice();
+
+    const filteredRows = displayedRows.filter(row => {
+        return (
+            row.firstName.toLowerCase().includes(searchText.toLowerCase()) ||
+            row.lastName.toLowerCase().includes(searchText.toLowerCase()) ||
+            row.startDate.toLowerCase().includes(searchText.toLowerCase()) ||
+            row.department.toLowerCase().includes(searchText.toLowerCase()) ||
+            row.dob.toLowerCase().includes(searchText.toLowerCase()) ||
+            row.street.toLowerCase().includes(searchText.toLowerCase()) ||
+            row.city.toLowerCase().includes(searchText.toLowerCase()) ||
+            row.state.toLowerCase().includes(searchText.toLowerCase()) ||
+            row.zip.toLowerCase().includes(searchText.toLowerCase())
+        )
+    });
+
+    const handleSearchInputChange = (event) => {
+        setSearchText(event.target.value);
+    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -167,10 +186,12 @@ function TableComponent() {
                         ))}
                     </select>
                 </IWantToSee>
-                <ResearchDiv>
-                    <label htmlFor="research">Search : </label>
-                    <input type="text" id="research"/>
-                </ResearchDiv>
+                <Tooltip title="Search on this page's items" placement="right">
+                    <ResearchDiv>
+                        <label htmlFor="research">Search : </label>
+                        <input type="text" id="research" value={searchText} onChange={handleSearchInputChange}/>
+                    </ResearchDiv>
+                </Tooltip>
             </ChoiceOfRowsPerPageAndResearch>
             <TableContainer>
                 <Table>
@@ -323,7 +344,7 @@ function TableComponent() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {displayedRows.map((row) => (
+                        {filteredRows.map((row) => (
                             <TableRow key={row.id}>
                                 <CustomTableCell>{row.firstName}</CustomTableCell>
                                 <CustomTableCell>{row.lastName}</CustomTableCell>

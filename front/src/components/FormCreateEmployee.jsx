@@ -16,6 +16,7 @@ const StyledLabel = styled.label`
 `;
 
 const StyledInput = styled.input`
+    font-family: Verdana;
     margin-bottom: 0.3em;
     border: none;
     border-bottom: 0.1em solid transparent;
@@ -47,15 +48,15 @@ function FormComponent() {
         <FormContainer>
             <IdentityAndAddress>Identity</IdentityAndAddress>
             <StyledLabel htmlFor="firstname">First Name</StyledLabel>
-            <StyledInput type="text" id="firstname" name="firstname"/>
+            <StyledInput type="text" id="firstname" name="firstname" required/>
             <StyledLabel htmlFor="lastname">Last Name</StyledLabel>
-            <StyledInput type="text" id="lastname" name="lastname"/>
+            <StyledInput type="text" id="lastname" name="lastname" required/>
             <StyledLabel htmlFor="dateofbirth">Date of Birth</StyledLabel>
-            <StyledInput type="date" id="dateofbirth" name="dateofbirth"/>
+            <StyledInput type="date" id="dateofbirth" name="dateofbirth" required/>
             <StyledLabel htmlFor="startdate">Start Date</StyledLabel>
-            <StyledInput type="date" id="startdate" name="startdate"/>
+            <StyledInput type="date" id="startdate" name="startdate" required/>
             <StyledLabel htmlFor="department">Department</StyledLabel>
-            <StyledSelect id="department" name="department">
+            <StyledSelect id="department" name="department" required>
                 <option value="sales">Sales</option>
                 <option value="marketing">Marketing</option>
                 <option value="engineering">Engineering</option>
@@ -64,11 +65,11 @@ function FormComponent() {
             </StyledSelect>
             <IdentityAndAddress>Address</IdentityAndAddress>
             <StyledLabel htmlFor="street">Street</StyledLabel>
-            <StyledInput type="text" id="street" name="street"/>
+            <StyledInput type="text" id="street" name="street" required/>
             <StyledLabel htmlFor="city">City</StyledLabel>
-            <StyledInput type="text" id="city" name="city"/>
+            <StyledInput type="text" id="city" name="city" required/>
             <StyledLabel htmlFor="state">State</StyledLabel>
-            <StyledSelect id="state" name="state">
+            <StyledSelect id="state" name="state" required>
                 <option value="alabama">Alabama</option>
                 <option value="alaska">Alaska</option>
                 <option value="americansamoa">American Samoa</option>
@@ -130,7 +131,7 @@ function FormComponent() {
                 <option value="wyoming">Wyoming</option>
             </StyledSelect>
             <StyledLabel htmlFor="zipcode">Zip Code</StyledLabel>
-            <StyledInput type="text" id="zipcode" name="zipcode"/>
+            <StyledInput type="text" id="zipcode" name="zipcode" required/>
         </FormContainer>
     )
 }
