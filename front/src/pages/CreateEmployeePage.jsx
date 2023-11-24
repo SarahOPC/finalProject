@@ -20,23 +20,15 @@ const ButtonDiv = styled.div`
     top: 275%;
 `;
 
-const Title = styled.div`
-    color: #333333;
-    text-align: center;
-    margin-bottom: 1.5em;
-    font-size: 1.5em;
-`;
-
 function CreateEmployeePage() {
     return (
         <CreateEmployeePageContainer>
             <HeaderComponent />
-            <Title>Create a new employee</Title>
             <FormDiv>
                 <FormComponent />
             </FormDiv>
             <ButtonDiv>
-                <ButtonComponent content="Save" />
+                <ButtonComponent content="Save new employee" />
             </ButtonDiv>
             <FooterComponent />
         </CreateEmployeePageContainer>

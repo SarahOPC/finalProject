@@ -18,7 +18,7 @@ const FooterContainer = styled.div`
 function FooterComponent() {
     return (
         <FooterContainer>
-            <p>Copyright 2023 HRNet</p>
+            <p>Copyright 2023 HRNet - WealthHealth</p>
         </FooterContainer>
     )
 }

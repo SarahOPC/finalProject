@@ -28,13 +28,6 @@ const CustomTableCell = styled(TableCell)`
     border-bottom: 0.1em solid #5D0486 !important; // !important is used to be sure the style is applied (vs style of material ui)
 `;
 
-const Title = styled.div`
-    color: #333333;
-    text-align: center;
-    margin-bottom: 1.5em;
-    font-size: 1.5em;
-`;
-
 const PageNumber = styled.div`
     margin: 0em 1.5em;
 `;
@@ -159,7 +152,6 @@ function TableComponent() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Title>List of current employees</Title>
             <ChoiceOfRowsPerPageAndResearch>
                 <IWantToSee>
                     <label htmlFor="rowsPerPageSelect">Rows per page : </label>

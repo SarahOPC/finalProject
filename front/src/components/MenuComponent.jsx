@@ -6,7 +6,7 @@ const MenuContainer = styled.div`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    margin-right: 1.5em;
+    margin-right: 3.5em;
     padding: 0.3em 0.5em;
     color: #333333;
     font-weight: 600;
@@ -25,8 +25,8 @@ const StyledLink = styled(Link)`
 function MenuComponent() {
     return (
         <MenuContainer>
-            <StyledLink to="/create">Create an Employee</StyledLink>
-            <StyledLink to="/visualize">List Of Current Employees</StyledLink>
+            <StyledLink to="/create">Create an employee</StyledLink>
+            <StyledLink to="/visualize">List of current employees</StyledLink>
         </MenuContainer>
     )
 }
