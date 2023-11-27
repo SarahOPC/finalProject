@@ -1,6 +1,8 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Tooltip } from "@mui/material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
+import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid'; // Generation of unique ID
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -67,10 +69,26 @@ const ResearchDiv = styled.div`
 const rowsPerPageOptions = [5, 10, 20, 50];
 
 function TableComponent() {
+    
+    const user = useSelector((state) => state.user); // Select user data from the store
+    console.log(user);
+
+    const { firstName, lastName, dob, startDate, department, street, city, state, zip } = user;
+    console.log(user.firstName);
+    console.log(user.lastName);
+    console.log(user.dob);
+    console.log(user.startDate);
+    console.log(user.department);
+    console.log(user.street);
+    console.log(user.city);
+    console.log(user.state);
+    console.log(user.zip);
+
     const rows = [
-        {id: 1, firstName: 'John', lastName: 'Doe', startDate: '25/11/2022', department: 'Sales', dob: '01/01/1990', street: '1125 Rue des usines', city: 'New York', state: 'New York', zip: 'J7J'},
-        {id: 2, firstName: 'Jane', lastName: 'Doebby', startDate: '13/11/2021', department: 'Engineering', dob: '13/06/1983', street: '2511 Rue des manufactures', city: 'Miami', state: 'Florida', zip: 'J7F'},
-        {id: 3, firstName: 'Jade', lastName: 'Wall', startDate: '07/06/2023', department: 'Marketing', dob: '04/03/1980', street: '1215 Rue du travail', city: 'Waiikiki', state: 'Hawaii', zip: 'J7H'},
+        {id: uuidv4(), firstName: 'John', lastName: 'Doe', startDate: '25/11/2022', department: 'Sales', dob: '01/01/1990', street: '1125 Rue des usines', city: 'New York', state: 'New York', zip: 'J7J'},
+        {id: uuidv4(), firstName: 'Jane', lastName: 'Doebby', startDate: '13/11/2021', department: 'Engineering', dob: '13/06/1983', street: '2511 Rue des manufactures', city: 'Miami', state: 'Florida', zip: 'J7F'},
+        {id: uuidv4(), firstName: 'Jade', lastName: 'Wall', startDate: '07/06/2023', department: 'Marketing', dob: '04/03/1980', street: '1215 Rue du travail', city: 'Waiikiki', state: 'Hawaii', zip: 'J7H'},
+        {id: uuidv4(), firstName, lastName, startDate, department, dob, street, city, state, zip},
     ];
 
     const convertingDateStringToDateObject = (dateString) => {

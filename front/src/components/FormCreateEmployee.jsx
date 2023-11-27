@@ -44,31 +44,30 @@ const IdentityAndAddress = styled.div`
 `;
 
 function FormComponent() {
-
+    
     const regexPatterns = {
-        nameAndCity: /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/,
-        street: /\d{1,}(\s{1}\w{1,})(\s{1}?\w{1,})+/,
+        nameAndCity: /^[a-zA-ZÀ-ÿ -]+$/, // Expression régulière corrigée
+        street: /\d{1,}\s\w{1,}\s?\w{1,}/,
         zipCode: /(^\d{5}$)|(^\d{5}-\d{4}$)/, // US ZIP codes in the format 12345 or 12345-6789
         // no regex added for date due to the datepicker of html tag
     };
-
+    
     const handleInputChange = (e, pattern) => {
         const {value} = e.target;
-        e.target.pattern = pattern;
         e.target.style.borderColor = pattern.test(value) ? 'transparent' : 'red';
     };
 
     return(
         <FormContainer>
             <IdentityAndAddress>Identity</IdentityAndAddress>
-            <StyledLabel htmlFor="firstname">First Name</StyledLabel>
-            <StyledInput type="text" id="firstname" name="firstname" onChange={(e) => handleInputChange(e, regexPatterns.nameAndCity)} required/>
-            <StyledLabel htmlFor="lastname">Last Name</StyledLabel>
-            <StyledInput type="text" id="lastname" name="lastname" onChange={(e) => handleInputChange(e, regexPatterns.nameAndCity)} required/>
-            <StyledLabel htmlFor="dateofbirth">Date of Birth</StyledLabel>
-            <StyledInput type="date" id="dateofbirth" name="dateofbirth" required/>
-            <StyledLabel htmlFor="startdate">Start Date</StyledLabel>
-            <StyledInput type="date" id="startdate" name="startdate" required/>
+            <StyledLabel htmlFor="firstName">First Name</StyledLabel>
+            <StyledInput type="text" id="firstName" name="firstName" onChange={(e) => handleInputChange(e, regexPatterns.nameAndCity)} required/>
+            <StyledLabel htmlFor="lastName">Last Name</StyledLabel>
+            <StyledInput type="text" id="lastName" name="lastName" onChange={(e) => handleInputChange(e, regexPatterns.nameAndCity)} required/>
+            <StyledLabel htmlFor="dob">Date of Birth</StyledLabel>
+            <StyledInput type="date" id="dob" name="dob" required/>
+            <StyledLabel htmlFor="startDate">Start Date</StyledLabel>
+            <StyledInput type="date" id="startDate" name="startDate" required/>
             <StyledLabel htmlFor="department">Department</StyledLabel>
             <StyledSelect id="department" name="department" required>
                 <option value="sales">Sales</option>
@@ -144,8 +143,8 @@ function FormComponent() {
                 <option value="wisconsin">Wisconsin</option>
                 <option value="wyoming">Wyoming</option>
             </StyledSelect>
-            <StyledLabel htmlFor="zipcode">Zip Code</StyledLabel>
-            <StyledInput type="text" id="zipcode" name="zipcode" onChange={(e) => handleInputChange(e, regexPatterns.zipCode)} required/>
+            <StyledLabel htmlFor="zip">Zip Code</StyledLabel>
+            <StyledInput type="text" id="zip" name="zip" onChange={(e) => handleInputChange(e, regexPatterns.zipCode)} required/>
         </FormContainer>
     )
 }
