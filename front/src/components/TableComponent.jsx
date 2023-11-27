@@ -70,19 +70,19 @@ const rowsPerPageOptions = [5, 10, 20, 50];
 
 function TableComponent() {
     
-    const user = useSelector((state) => state.user); // Select user data from the store
-    console.log(user);
+    const employee = useSelector((state) => state.employee); // Select employee data from the store
+    console.log(employee);
 
-    const { firstName, lastName, dob, startDate, department, street, city, state, zip } = user;
-    console.log(user.firstName);
-    console.log(user.lastName);
-    console.log(user.dob);
-    console.log(user.startDate);
-    console.log(user.department);
-    console.log(user.street);
-    console.log(user.city);
-    console.log(user.state);
-    console.log(user.zip);
+    const { firstName, lastName, dob, startDate, department, street, city, state, zip } = employee;
+    console.log(employee.firstName);
+    console.log(employee.lastName);
+    console.log(employee.dob);
+    console.log(employee.startDate);
+    console.log(employee.department);
+    console.log(employee.street);
+    console.log(employee.city);
+    console.log(employee.state);
+    console.log(employee.zip);
 
     const rows = [
         {id: uuidv4(), firstName: 'John', lastName: 'Doe', startDate: '25/11/2022', department: 'Sales', dob: '01/01/1990', street: '1125 Rue des usines', city: 'New York', state: 'New York', zip: 'J7J'},

@@ -3,8 +3,8 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // Choice of the local storage
 
-const userSlice = createSlice({
-    name: "user",
+const employeeSlice = createSlice({
+    name: "employee",
     initialState: {
         firstName: "",
         lastName: "",
@@ -17,8 +17,8 @@ const userSlice = createSlice({
         zip: "",
     },
     reducers: {
-        saveUser: (state, action) => {
-            const { firstName, lastName, dob, startDate, department, street, city, state: userState, zip } = action.payload;
+        saveEmployee: (state, action) => {
+            const { firstName, lastName, dob, startDate, department, street, city, state: employeeState, zip } = action.payload;
 
             state.firstName = firstName;
             state.lastName = lastName;
@@ -27,16 +27,16 @@ const userSlice = createSlice({
             state.department = department;
             state.street = street;
             state.city = city;
-            state.state = userState;
+            state.state = employeeState;
             state.zip = zip;
         },
     }
 })
 
-export const { saveUser } = userSlice.actions;
+export const { saveEmployee } = employeeSlice.actions;
 
 const rootReducer = combineReducers({
-    user: userSlice.reducer,
+    employee: employeeSlice.reducer,
 });
 
 const persistConfig = {
