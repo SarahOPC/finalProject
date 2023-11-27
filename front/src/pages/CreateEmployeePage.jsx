@@ -12,7 +12,7 @@ const CreateEmployeePageContainer = styled.div`
 
 const FormDiv = styled.div`
     position: absolute;
-    left: 31%;
+    left: 29%;
     top: 72%;
 `;
 

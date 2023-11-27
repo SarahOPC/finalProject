@@ -10,7 +10,7 @@ const HomePageContainer = styled.div`
 
 const StyledButtons = styled.div`
     position: absolute;
-    left: 38%;
+    left: 36%;
     top: 111%;
 `;
 
