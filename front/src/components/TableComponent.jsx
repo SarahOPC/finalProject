@@ -71,24 +71,17 @@ const rowsPerPageOptions = [5, 10, 20, 50];
 function TableComponent() {
     
     const employee = useSelector((state) => state.employee); // Select employee data from the store
-    console.log(employee);
 
-    const { firstName, lastName, dob, startDate, department, street, city, state, zip } = employee;
-    console.log(employee.firstName);
-    console.log(employee.lastName);
-    console.log(employee.dob);
-    console.log(employee.startDate);
-    console.log(employee.department);
-    console.log(employee.street);
-    console.log(employee.city);
-    console.log(employee.state);
-    console.log(employee.zip);
+    const { firstName, lastName, dob, startDate, department, street, city, usState, zip } = employee;
 
     const rows = [
-        {id: uuidv4(), firstName: 'John', lastName: 'Doe', startDate: '25/11/2022', department: 'Sales', dob: '01/01/1990', street: '1125 Rue des usines', city: 'New York', state: 'New York', zip: 'J7J'},
-        {id: uuidv4(), firstName: 'Jane', lastName: 'Doebby', startDate: '13/11/2021', department: 'Engineering', dob: '13/06/1983', street: '2511 Rue des manufactures', city: 'Miami', state: 'Florida', zip: 'J7F'},
-        {id: uuidv4(), firstName: 'Jade', lastName: 'Wall', startDate: '07/06/2023', department: 'Marketing', dob: '04/03/1980', street: '1215 Rue du travail', city: 'Waiikiki', state: 'Hawaii', zip: 'J7H'},
-        {id: uuidv4(), firstName, lastName, startDate, department, dob, street, city, state, zip},
+        {id: uuidv4(), firstName: 'Gal', lastName: 'Gadot', startDate: '25/11/2022', department: 'Sales', dob: '29/10/1983', street: '1125 Rue des Mimosas', city: 'New York', usState: 'NY', zip: '12345'},
+        {id: uuidv4(), firstName: 'Margot', lastName: 'Robbie', startDate: '13/06/2021', department: 'Engineering', dob: '13/06/1980', street: '2511 Rue des Marguerites', city: 'Miami', usState: 'FL', zip: '12346'},
+        {id: uuidv4(), firstName: 'Scarlett', lastName: 'Johansson', startDate: '10/07/2023', department: 'Marketing', dob: '03/04/2001', street: '1215 Rue du Lys', city: 'Waiikiki', usState: 'HI', zip: '12347'},
+        {id: uuidv4(), firstName: 'Jenna', lastName: 'Ortega', startDate: '11/02/2019', department: 'Human Resources', dob: '07/05/1975', street: '297 Rue des Roses', city: 'Los Angeles', usState: 'CA', zip: '12345'},
+        {id: uuidv4(), firstName: 'Gal', lastName: 'Gadot', startDate: '13/03/2022', department: 'Legal', dob: '03/05/1977', street: '20345 Rue des Muguets', city: 'Chandler', usState: 'AZ', zip: '12345'},
+        {id: uuidv4(), firstName: 'Gal', lastName: 'Gadot', startDate: '15/09/2021', department: 'Sales', dob: '19/08/1973', street: '1940 Rue des Gerberas', city: 'Cheyenne', usState: 'WY', zip: '12345'},
+        {id: uuidv4(), firstName, lastName, startDate, department, dob, street, city, usState, zip},
     ];
 
     const convertingDateStringToDateObject = (dateString) => {
@@ -178,7 +171,7 @@ function TableComponent() {
             row.dob.toLowerCase().includes(searchText.toLowerCase()) ||
             row.street.toLowerCase().includes(searchText.toLowerCase()) ||
             row.city.toLowerCase().includes(searchText.toLowerCase()) ||
-            row.state.toLowerCase().includes(searchText.toLowerCase()) ||
+            row.usState.toLowerCase().includes(searchText.toLowerCase()) ||
             row.zip.toLowerCase().includes(searchText.toLowerCase())
         )
     });
@@ -337,9 +330,9 @@ function TableComponent() {
                                                 },
                                             }}>
                                 <TableSortLabel
-                                    active={orderBy === 'state'}
-                                    direction={orderBy === 'state' ? order : 'asc'}
-                                    onClick={() => handleSorting('state')}
+                                    active={orderBy === 'usState'}
+                                    direction={orderBy === 'usState' ? order : 'asc'}
+                                    onClick={() => handleSorting('usState')}
                                 >State
                                 </TableSortLabel>
                             </TableCell>
@@ -371,7 +364,7 @@ function TableComponent() {
                                 <CustomTableCell>{row.dob}</CustomTableCell>
                                 <CustomTableCell>{row.street}</CustomTableCell>
                                 <CustomTableCell>{row.city}</CustomTableCell>
-                                <CustomTableCell>{row.state}</CustomTableCell>
+                                <CustomTableCell>{row.usState}</CustomTableCell>
                                 <CustomTableCell>{row.zip}</CustomTableCell>
                             </TableRow>
                         ))}

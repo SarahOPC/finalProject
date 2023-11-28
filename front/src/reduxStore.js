@@ -13,12 +13,12 @@ const employeeSlice = createSlice({
         department: "",
         street: "",
         city: "",
-        state: "",
+        usState: "",
         zip: "",
     },
     reducers: {
         saveEmployee: (state, action) => {
-            const { firstName, lastName, dob, startDate, department, street, city, state: employeeState, zip } = action.payload;
+            const { firstName, lastName, dob, startDate, department, street, city, usState: employeeState, zip } = action.payload;
 
             state.firstName = firstName;
             state.lastName = lastName;
@@ -27,7 +27,7 @@ const employeeSlice = createSlice({
             state.department = department;
             state.street = street;
             state.city = city;
-            state.state = employeeState;
+            state.usState = employeeState;
             state.zip = zip;
         },
     }

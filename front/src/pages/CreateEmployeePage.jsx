@@ -5,7 +5,7 @@ import { FormComponent } from "../components/FormCreateEmployee";
 import { ButtonComponent } from "../components/ButtonComponent";
 import { useState } from "react";
 import { ModalComponent } from "../components/ModalComponent";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { saveEmployee } from "../reduxStore";
 
 const CreateEmployeePageContainer = styled.div`
@@ -26,21 +26,25 @@ const ButtonDiv = styled.div`
 
 function CreateEmployeePage() {
     const [showModal, setShowModal] = useState(false);
-    const employee = useSelector((state) => state.employee); // Retrieves state information about the employee (firstName, lastName, ...)
     const dispatch = useDispatch();
 
     const handleSaveClick = () => {
         const requiredFields = document.querySelectorAll('input[required], select[required]');
         let allFieldsFilled = true;
+        const employeeData = {};
 
         requiredFields.forEach(field => {
             if(!field.value) {
                 allFieldsFilled = false;
-            }    
+            } else {
+                employeeData[field.name] = field.value;
+            }
         });
+
+        console.log(employeeData);
+        
         if(allFieldsFilled) {
-            dispatch(saveEmployee({...employee})); // Dispatch action to save employee data
-            console.log(employee);
+            dispatch(saveEmployee(employeeData)); // Dispatch action to save employee data
             setShowModal(true);
         } else {
             alert("Some elements are missing to complete a new registration");
