@@ -70,7 +70,7 @@ const rowsPerPageOptions = [5, 10, 20, 50];
 
 function TableComponent() {
     
-    const employee = useSelector((state) => state.employee); // Select employee data from the store
+    const employee = useSelector((state) => state.employee.employees); // Select employee data from the store
 
     const { firstName, lastName, dob, startDate, department, street, city, usState, zip } = employee;
 
@@ -85,8 +85,8 @@ function TableComponent() {
     ];
 
     const convertingDateStringToDateObject = (dateString) => {
-        const [day, month, year] = dateString.split('/');
-        return new Date(`${month}/${day}/${year}`).getTime();
+        const [year, month, day] = dateString.split('-');
+        return new Date(year, month - 1, day).getTime(); // month -1 because, in JS, months start at 0
     };
 
     const [orderBy, setOrderBy] = useState('');
@@ -118,15 +118,9 @@ function TableComponent() {
                     }
                 } else {
                     if(order === 'asc') {
-                        return a[orderBy] > b[orderBy] ? 1 : -1;
-                        // if order === 'asc', sort the rows in ascending order
-                        // Check if a[orderBy] is greater than b[orderBy]
-                        // 1 indicate a should come after b and vice versa
+                        return a[orderBy].localeCompare(b[orderBy]);
                     } else {
-                        return a[orderBy] < b[orderBy] ? 1 : -1;
-                        // if order === 'desc', sort the rows in descending order
-                        // Check if a[orderBy] is less than b[orderBy]
-                        // 1 indicate a should come after b and vice versa
+                        return b[orderBy].localeCompare(a[orderBy]);
                     }
                 }
             });

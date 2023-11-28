@@ -3,35 +3,19 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // Choice of the local storage
 
+const initialState = {
+    employees: [],
+};
+
 const employeeSlice = createSlice({
     name: "employee",
-    initialState: {
-        firstName: "",
-        lastName: "",
-        dob: "",
-        startDate: "",
-        department: "",
-        street: "",
-        city: "",
-        usState: "",
-        zip: "",
-    },
+    initialState,        
     reducers: {
         saveEmployee: (state, action) => {
-            const { firstName, lastName, dob, startDate, department, street, city, usState: employeeState, zip } = action.payload;
-
-            state.firstName = firstName;
-            state.lastName = lastName;
-            state.dob = dob;
-            state.startDate = startDate;
-            state.department = department;
-            state.street = street;
-            state.city = city;
-            state.usState = employeeState;
-            state.zip = zip;
+            state.employees = [...state.employees, action.payload]; // Concat every new employee in employees
         },
     }
-})
+});
 
 export const { saveEmployee } = employeeSlice.actions;
 
