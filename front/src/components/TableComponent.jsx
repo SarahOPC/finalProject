@@ -75,12 +75,12 @@ function TableComponent() {
     const { firstName, lastName, dob, startDate, department, street, city, usState, zip } = employee;
 
     const rows = [
-        {id: uuidv4(), firstName: 'Gal', lastName: 'Gadot', startDate: '25/11/2022', department: 'Sales', dob: '29/10/1983', street: '1125 Rue des Mimosas', city: 'New York', usState: 'NY', zip: '12345'},
-        {id: uuidv4(), firstName: 'Margot', lastName: 'Robbie', startDate: '13/06/2021', department: 'Engineering', dob: '13/06/1980', street: '2511 Rue des Marguerites', city: 'Miami', usState: 'FL', zip: '12346'},
-        {id: uuidv4(), firstName: 'Scarlett', lastName: 'Johansson', startDate: '10/07/2023', department: 'Marketing', dob: '03/04/2001', street: '1215 Rue du Lys', city: 'Waiikiki', usState: 'HI', zip: '12347'},
-        {id: uuidv4(), firstName: 'Jenna', lastName: 'Ortega', startDate: '11/02/2019', department: 'Human Resources', dob: '07/05/1975', street: '297 Rue des Roses', city: 'Los Angeles', usState: 'CA', zip: '12345'},
-        {id: uuidv4(), firstName: 'Gal', lastName: 'Gadot', startDate: '13/03/2022', department: 'Legal', dob: '03/05/1977', street: '20345 Rue des Muguets', city: 'Chandler', usState: 'AZ', zip: '12345'},
-        {id: uuidv4(), firstName: 'Gal', lastName: 'Gadot', startDate: '15/09/2021', department: 'Sales', dob: '19/08/1973', street: '1940 Rue des Gerberas', city: 'Cheyenne', usState: 'WY', zip: '12345'},
+        {id: uuidv4(), firstName: 'Gal', lastName: 'Gadot', startDate: '2022-11-25', department: 'Sales', dob: '1983-10-29', street: '1125 Rue des Mimosas', city: 'New York', usState: 'NY', zip: '12345'},
+        {id: uuidv4(), firstName: 'Margot', lastName: 'Robbie', startDate: '2021-06-13', department: 'Engineering', dob: '1980-06-13', street: '2511 Rue des Marguerites', city: 'Miami', usState: 'FL', zip: '12346'},
+        {id: uuidv4(), firstName: 'Scarlett', lastName: 'Johansson', startDate: '2023-07-10', department: 'Marketing', dob: '2001-04-03', street: '1215 Rue du Lys', city: 'Waiikiki', usState: 'HI', zip: '12347'},
+        {id: uuidv4(), firstName: 'Jenna', lastName: 'Ortega', startDate: '2019-02-11', department: 'Human Resources', dob: '1975-05-07', street: '297 Rue des Roses', city: 'Los Angeles', usState: 'CA', zip: '12341'},
+        {id: uuidv4(), firstName: 'Jane', lastName: 'Fonda', startDate: '2022-03-13', department: 'Legal', dob: '1977-05-03', street: '20345 Rue des Muguets', city: 'Chandler', usState: 'AZ', zip: '12349'},
+        {id: uuidv4(), firstName: 'Halle', lastName: 'Berry', startDate: '2021-09-15', department: 'Sales', dob: '1973-08-19', street: '1940 Rue des Gerberas', city: 'Cheyenne', usState: 'WY', zip: '12350'},
         {id: uuidv4(), firstName, lastName, startDate, department, dob, street, city, usState, zip},
     ];
 
@@ -135,33 +135,32 @@ function TableComponent() {
         return rows;
     }
 
-    // sx = style for material ui
-
     const [page, setPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]); // By default 5 items per page
     const [searchText, setSearchText] = useState('');
-
+    
     const handleChangeOfPagePrevious = () => {
         if(page > 1) {
             setPage(page - 1);
         }
     };
-
+    
     const sortedRowsData = sortedRows();
-
+    
     const handleChangeOfPageForward = () => {
-        if((page + 1) * rowsPerPage < sortedRowsData.length) {
+        const totalPages = Math.ceil(sortedRowsData.length / rowsPerPage);
+        if(page + 1<= totalPages) {
             setPage(page + 1);
         }
     }
-
+    
     const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(parseInt(event.target.value, 5));
         setPage(1); // Coming back to the first page if change of rows per page
     };
-
-    const displayedRows = sortedRowsData.slice();
-
+    
+    const displayedRows = sortedRowsData.slice((page - 1) * rowsPerPage, page * rowsPerPage);
+    
     const filteredRows = displayedRows.filter(row => {
         return (
             row.firstName.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -173,14 +172,16 @@ function TableComponent() {
             row.city.toLowerCase().includes(searchText.toLowerCase()) ||
             row.usState.toLowerCase().includes(searchText.toLowerCase()) ||
             row.zip.toLowerCase().includes(searchText.toLowerCase())
-        )
-    });
+            )
+        });
+        
+        const handleSearchInputChange = (event) => {
+            setSearchText(event.target.value);
+        };
+        
+        // sx = style for material ui
 
-    const handleSearchInputChange = (event) => {
-        setSearchText(event.target.value);
-    };
-
-    return (
+        return (
         <ThemeProvider theme={theme}>
             <ChoiceOfRowsPerPageAndResearch>
                 <IWantToSee>

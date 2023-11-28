@@ -8,6 +8,17 @@ import { ModalComponent } from "../components/ModalComponent";
 import { useDispatch } from 'react-redux';
 import { saveEmployee } from "../reduxStore";
 
+const PageContainer = styled.div`
+`;
+const GrayBackground = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+`;
 const CreateEmployeePageContainer = styled.div`
     position: relative;
 `;
@@ -53,20 +64,28 @@ function CreateEmployeePage() {
 
     const handleCloseModalClic = () => {
         setShowModal(false);
+        window.location.href='/create';
     };
 
     return (
-        <CreateEmployeePageContainer>
-            <HeaderComponent />
-            <FormDiv>
-                <FormComponent />
-            </FormDiv>
-            <ButtonDiv>
-                <ButtonComponent content="Save new employee" onClick={handleSaveClick}/>
-            </ButtonDiv>
-            <FooterComponent />
-            {showModal && <ModalComponent handleCloseModalClic={handleCloseModalClic} />}
-        </CreateEmployeePageContainer>
+        <PageContainer>
+            <CreateEmployeePageContainer>
+                <HeaderComponent />
+                <FormDiv>
+                    <FormComponent />
+                </FormDiv>
+                <ButtonDiv>
+                    <ButtonComponent content="Save new employee" onClick={handleSaveClick}/>
+                </ButtonDiv>
+                <FooterComponent />
+            </CreateEmployeePageContainer>
+                {showModal && (
+                    <>
+                    <GrayBackground />
+                    <ModalComponent handleCloseModalClic={handleCloseModalClic} />
+                    </>
+                )}
+        </PageContainer>
     )
 }
 

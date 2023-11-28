@@ -71,10 +71,10 @@ function FormComponent() {
             <StyledLabel htmlFor="department">Department</StyledLabel>
             <StyledSelect id="department" name="department" required>
                 <option value="sales">Sales</option>
-                <option value="marketing">Marketing</option>
-                <option value="engineering">Engineering</option>
-                <option value="humanresources">Human Resources</option>
-                <option value="legal">Legal</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Engineering">Engineering</option>
+                <option value="HR">Human Resources</option>
+                <option value="Legal">Legal</option>
             </StyledSelect>
             <IdentityAndAddress>Address</IdentityAndAddress>
             <StyledLabel htmlFor="street">Street</StyledLabel>
