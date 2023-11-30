@@ -12,7 +12,22 @@ const employeeSlice = createSlice({
     initialState,        
     reducers: {
         saveEmployee: (state, action) => {
-            state.employees = [...state.employees, action.payload]; // Concat every new employee in employees
+            //state.employees = [...state.employees, action.payload]; // Concat every new employee in employees
+
+            // Creating a copy of the existing employees array
+            const existingEmployees = [...state.employees];
+
+            // Adding the new employee to the copied array
+            existingEmployees.push(action.payload);
+
+            // Updating the state with the new array
+            state.employees = existingEmployees;
+
+            // Debugging each entry in the employees array
+            console.log("Existing Employees:");
+            existingEmployees.forEach((employee, index) => {
+            console.log(`Employee ${index + 1}: `, employee);
+            });
         },
     }
 });

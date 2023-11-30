@@ -70,9 +70,7 @@ const rowsPerPageOptions = [5, 10, 20, 50];
 
 function TableComponent() {
     
-    const employee = useSelector((state) => state.employee.employees); // Select employee data from the store
-
-    const { firstName, lastName, dob, startDate, department, street, city, usState, zip } = employee;
+    const allEmployees = useSelector((state) => state.employee.employees); // Select employee data from the store
 
     const rows = [
         {id: uuidv4(), firstName: 'Gal', lastName: 'Gadot', startDate: '2022-11-25', department: 'Sales', dob: '1983-10-29', street: '1125 Rue des Mimosas', city: 'New York', usState: 'NY', zip: '12345'},
@@ -81,8 +79,11 @@ function TableComponent() {
         {id: uuidv4(), firstName: 'Jenna', lastName: 'Ortega', startDate: '2019-02-11', department: 'Human Resources', dob: '1975-05-07', street: '297 Rue des Roses', city: 'Los Angeles', usState: 'CA', zip: '12341'},
         {id: uuidv4(), firstName: 'Jane', lastName: 'Fonda', startDate: '2022-03-13', department: 'Legal', dob: '1977-05-03', street: '20345 Rue des Muguets', city: 'Chandler', usState: 'AZ', zip: '12349'},
         {id: uuidv4(), firstName: 'Halle', lastName: 'Berry', startDate: '2021-09-15', department: 'Sales', dob: '1973-08-19', street: '1940 Rue des Gerberas', city: 'Cheyenne', usState: 'WY', zip: '12350'},
-        {id: uuidv4(), firstName, lastName, startDate, department, dob, street, city, usState, zip},
     ];
+
+    allEmployees.forEach(e=>{
+        rows.push({id: uuidv4(), firstName: e.firstName, lastName: e.lastName, startDate: e.startDate, department: e.department, dob:e.dob, street: e.street, city:e.city, usState:e.usState, zip:e.zip});
+    });
 
     const convertingDateStringToDateObject = (dateString) => {
         const [year, month, day] = dateString.split('-');
@@ -156,18 +157,28 @@ function TableComponent() {
     const displayedRows = sortedRowsData.slice((page - 1) * rowsPerPage, page * rowsPerPage);
     
     const filteredRows = displayedRows.filter(row => {
+        let firstName = row.firstName ? row.firstName : "";
+        let lastName = row.lastName ? row.lastName : "";
+        let startDate = row.startDate ? row.startDate : "";
+        let department = row.department ? row.department : "";
+        let dob = row.dob ? row.dob : "";
+        let street = row.street ? row.street : "";
+        let city = row.city ? row.city : "";
+        let usState = row.usState ? row.usState : "";
+        let zip = row.zip ? row.zip : "";
+
         return (
-            row.firstName.toLowerCase().includes(searchText.toLowerCase()) ||
-            row.lastName.toLowerCase().includes(searchText.toLowerCase()) ||
-            row.startDate.toLowerCase().includes(searchText.toLowerCase()) ||
-            row.department.toLowerCase().includes(searchText.toLowerCase()) ||
-            row.dob.toLowerCase().includes(searchText.toLowerCase()) ||
-            row.street.toLowerCase().includes(searchText.toLowerCase()) ||
-            row.city.toLowerCase().includes(searchText.toLowerCase()) ||
-            row.usState.toLowerCase().includes(searchText.toLowerCase()) ||
-            row.zip.toLowerCase().includes(searchText.toLowerCase())
+            firstName.toLowerCase().includes(searchText.toLowerCase()) ||
+            lastName.toLowerCase().includes(searchText.toLowerCase()) ||
+            startDate.toLowerCase().includes(searchText.toLowerCase()) ||
+            department.toLowerCase().includes(searchText.toLowerCase()) ||
+            dob.toLowerCase().includes(searchText.toLowerCase()) ||
+            street.toLowerCase().includes(searchText.toLowerCase()) ||
+            city.toLowerCase().includes(searchText.toLowerCase()) ||
+            usState.toLowerCase().includes(searchText.toLowerCase()) ||
+            zip.toLowerCase().includes(searchText.toLowerCase())
             )
-        });
+        }); 
         
         const handleSearchInputChange = (event) => {
             setSearchText(event.target.value);
