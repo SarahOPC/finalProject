@@ -62,7 +62,10 @@ function CreateEmployeePage() {
 
     const handleCloseModalClic = () => {
         setShowModal(false);
-        window.location.href='/create';
+        const requiredFields = document.querySelectorAll('input[required], select[required]');
+        requiredFields.forEach(field => {
+            field.value = '';
+        })
     };
 
     return (
