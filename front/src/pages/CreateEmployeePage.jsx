@@ -51,8 +51,6 @@ function CreateEmployeePage() {
                 employeeData[field.name] = field.value;
             }
         });
-
-        console.log(employeeData);
         
         if(allFieldsFilled) {
             dispatch(saveEmployee(employeeData)); // Dispatch action to save employee data

@@ -170,7 +170,6 @@ function TableComponent() {
         
         const handleSearchInputChange = (event) => {
             setSearchText(event.target.value);
-            console.log(searchText);
         };
 
         const displayedRows = filteredRows.slice((page - 1) * rowsPerPage, page * rowsPerPage);

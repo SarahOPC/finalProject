@@ -1,0 +1,17 @@
+{
+  "name": "modaltopublish",
+  "version": "1.0.0",
+  "description": "A modal component for React JS",
+  "main": "ModalComponent.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sarah Raguin",
+  "license": "ISC",
+  "dependencies": {
+    "styled-components": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2"
+  },
+  "readme": "README.md"
+}
