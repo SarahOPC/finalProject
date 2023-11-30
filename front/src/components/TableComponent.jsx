@@ -150,39 +150,30 @@ function TableComponent() {
     }
     
     const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 5));
+        setRowsPerPage(parseInt(event.target.value, 10));
         setPage(1); // Coming back to the first page if change of rows per page
     };
     
-    const displayedRows = sortedRowsData.slice((page - 1) * rowsPerPage, page * rowsPerPage);
-    
-    const filteredRows = displayedRows.filter(row => {
-        let firstName = row.firstName ? row.firstName : "";
-        let lastName = row.lastName ? row.lastName : "";
-        let startDate = row.startDate ? row.startDate : "";
-        let department = row.department ? row.department : "";
-        let dob = row.dob ? row.dob : "";
-        let street = row.street ? row.street : "";
-        let city = row.city ? row.city : "";
-        let usState = row.usState ? row.usState : "";
-        let zip = row.zip ? row.zip : "";
-
+    const filteredRows = sortedRowsData.filter(row => {
         return (
-            firstName.toLowerCase().includes(searchText.toLowerCase()) ||
-            lastName.toLowerCase().includes(searchText.toLowerCase()) ||
-            startDate.toLowerCase().includes(searchText.toLowerCase()) ||
-            department.toLowerCase().includes(searchText.toLowerCase()) ||
-            dob.toLowerCase().includes(searchText.toLowerCase()) ||
-            street.toLowerCase().includes(searchText.toLowerCase()) ||
-            city.toLowerCase().includes(searchText.toLowerCase()) ||
-            usState.toLowerCase().includes(searchText.toLowerCase()) ||
-            zip.toLowerCase().includes(searchText.toLowerCase())
+            (row.firstName.toLowerCase()).includes(searchText.toLowerCase()) ||
+            (row.lastName.toLowerCase()).includes(searchText.toLowerCase()) ||
+            (row.startDate.toLowerCase()).includes(searchText.toLowerCase()) ||
+            (row.department.toLowerCase()).includes(searchText.toLowerCase()) ||
+            (row.dob.toLowerCase()).includes(searchText.toLowerCase()) ||
+            (row.street.toLowerCase()).includes(searchText.toLowerCase()) ||
+            (row.city.toLowerCase()).includes(searchText.toLowerCase()) ||
+            (row.usState.toLowerCase()).includes(searchText.toLowerCase()) ||
+            (row.zip.toLowerCase()).includes(searchText.toLowerCase())
             )
         }); 
         
         const handleSearchInputChange = (event) => {
             setSearchText(event.target.value);
+            console.log(searchText);
         };
+
+        const displayedRows = filteredRows.slice((page - 1) * rowsPerPage, page * rowsPerPage);
         
         // sx = style for material ui
 
@@ -361,7 +352,7 @@ function TableComponent() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {filteredRows.map((row) => (
+                        {displayedRows.map((row) => (
                             <TableRow key={row.id}>
                                 <CustomTableCell>{row.firstName}</CustomTableCell>
                                 <CustomTableCell>{row.lastName}</CustomTableCell>
