@@ -23,7 +23,7 @@ const StyledInput = styled.input`
     transition: border-bottom 0.3s ease;
 
     &:hover {
-        border-bottom: 0.1em solid #999999;
+        border-bottom: 0.1em solid #677d15;
     }
 `;
 
@@ -34,7 +34,7 @@ const StyledSelect = styled.select`
     transition: border-bottom 0.3s ease;
 
     &:hover {
-        border-bottom: 0.1em solid #999999;
+        border-bottom: 0.1em solid #677d15;
     }
 `;
 

@@ -8,7 +8,7 @@ const ButtonContainer = styled.button`
     border-bottom: 0.1em solid transparent;
     transition: border-bottom 0.3s ease;
     &:hover {
-        border-bottom : 0.1em solid #333333;
+        border-bottom : 0.1em solid #677d15;
     }
 `;
 

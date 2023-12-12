@@ -10,7 +10,7 @@ const FooterContainer = styled.div`
     padding-bottom: 1em;
 
     p {
-        color: #5D0486;
+        color: #677d15;
         font-weight: bold;
     }
 `;

@@ -15,7 +15,7 @@ const theme = createTheme({
                 root: {
                     palette: {
                         primary: {
-                            main: '#5D0486',
+                            main: '#677d15',
                             contrastText: '#FFFFFF',
                         },
                         contrastThreshold: 4.5,
@@ -27,7 +27,7 @@ const theme = createTheme({
 })
 
 const CustomTableCell = styled(TableCell)`
-    border-bottom: 0.1em solid #5D0486 !important; // !important is used to be sure the style is applied (vs style of material ui)
+    border-bottom: 0.1em solid #677d15 !important; // !important is used to be sure the style is applied (vs style of material ui)
 `;
 
 const PageNumber = styled.div`
@@ -61,7 +61,7 @@ const ResearchDiv = styled.div`
         border-bottom: 0.1em solid transparent;
         transition: border-bottom 0.3s ease;
             &:hover {
-                border-bottom : 0.1em solid #333333;
+                border-bottom : 0.1em solid #677d15;
             }
     }
 `;
@@ -210,7 +210,7 @@ function TableComponent() {
                                                 borderBottom: '0.1em solid transparent',
                                                 transition: 'border-bottom 0.3s ease',
                                                 '&:hover': {
-                                                    borderBottom: '0.1em solid #5D0486',
+                                                    borderBottom: '0.1em solid #677d15',
                                                 },
                                             }}>
                                 <TableSortLabel color="theme.palette.primary.main"
@@ -226,7 +226,7 @@ function TableComponent() {
                                                 borderBottom: '0.1em solid transparent',
                                                 transition: 'border-bottom 0.3s ease',
                                                 '&:hover': {
-                                                    borderBottom: '0.1em solid #5D0486',
+                                                    borderBottom: '0.1em solid #677d15',
                                                 },
                                             }}>
                                 <TableSortLabel
@@ -242,7 +242,7 @@ function TableComponent() {
                                                 borderBottom: '0.1em solid transparent',
                                                 transition: 'border-bottom 0.3s ease',
                                                 '&:hover': {
-                                                    borderBottom: '0.1em solid #5D0486',
+                                                    borderBottom: '0.1em solid #677d15',
                                                 },
                                             }}>
                                 <TableSortLabel
@@ -258,7 +258,7 @@ function TableComponent() {
                                                 borderBottom: '0.1em solid transparent',
                                                 transition: 'border-bottom 0.3s ease',
                                                 '&:hover': {
-                                                    borderBottom: '0.1em solid #5D0486',
+                                                    borderBottom: '0.1em solid #677d15',
                                                 },
                                             }}>
                                 <TableSortLabel
@@ -274,7 +274,7 @@ function TableComponent() {
                                                 borderBottom: '0.1em solid transparent',
                                                 transition: 'border-bottom 0.3s ease',
                                                 '&:hover': {
-                                                    borderBottom: '0.1em solid #5D0486',
+                                                    borderBottom: '0.1em solid #677d15',
                                                 },
                                             }}>
                                 <TableSortLabel
@@ -290,7 +290,7 @@ function TableComponent() {
                                                 borderBottom: '0.1em solid transparent',
                                                 transition: 'border-bottom 0.3s ease',
                                                 '&:hover': {
-                                                    borderBottom: '0.1em solid #5D0486',
+                                                    borderBottom: '0.1em solid #677d15',
                                                 },
                                             }}>
                                 <TableSortLabel
@@ -306,7 +306,7 @@ function TableComponent() {
                                                 borderBottom: '0.1em solid transparent',
                                                 transition: 'border-bottom 0.3s ease',
                                                 '&:hover': {
-                                                    borderBottom: '0.1em solid #5D0486',
+                                                    borderBottom: '0.1em solid #677d15',
                                                 },
                                             }}>
                                 <TableSortLabel
@@ -322,7 +322,7 @@ function TableComponent() {
                                                 borderBottom: '0.1em solid transparent',
                                                 transition: 'border-bottom 0.3s ease',
                                                 '&:hover': {
-                                                    borderBottom: '0.1em solid #5D0486',
+                                                    borderBottom: '0.1em solid #677d15',
                                                 },
                                             }}>
                                 <TableSortLabel
@@ -338,7 +338,7 @@ function TableComponent() {
                                                 borderBottom: '0.1em solid transparent',
                                                 transition: 'border-bottom 0.3s ease',
                                                 '&:hover': {
-                                                    borderBottom: '0.1em solid #5D0486',
+                                                    borderBottom: '0.1em solid #677d15',
                                                 },
                                             }}>
                                 <TableSortLabel
@@ -369,11 +369,11 @@ function TableComponent() {
             </TableContainer>
             <Paging>
                 <Tooltip title='Previous page' placement="left">
-                    <FontAwesomeIcon icon={faChevronLeft} style={{color: "#5d0486", cursor:'pointer'}} onClick={handleChangeOfPagePrevious} />
+                    <FontAwesomeIcon icon={faChevronLeft} style={{color: "#677d15", cursor:'pointer'}} onClick={handleChangeOfPagePrevious} />
                 </Tooltip>
                 <PageNumber>{page}</PageNumber>
                 <Tooltip title='Next page' placement="right">
-                    <FontAwesomeIcon icon={faChevronRight} style={{color: "#5d0486", cursor:'pointer'}} onClick={handleChangeOfPageForward}/>
+                    <FontAwesomeIcon icon={faChevronRight} style={{color: "#677d15", cursor:'pointer'}} onClick={handleChangeOfPageForward}/>
                 </Tooltip>
             </Paging>
         </ThemeProvider>
