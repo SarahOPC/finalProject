@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname)));
 
 // Route pour la page principale
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'employee-list.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Démarrer le serveur

@@ -141,9 +141,9 @@ function TableComponent() {
     };
     
     const sortedRowsData = sortedRows();
+    const totalPages = Math.ceil(sortedRowsData.length / rowsPerPage);
     
     const handleChangeOfPageForward = () => {
-        const totalPages = Math.ceil(sortedRowsData.length / rowsPerPage);
         if(page + 1<= totalPages) {
             setPage(page + 1);
         }
@@ -371,7 +371,7 @@ function TableComponent() {
                 <Tooltip title='Previous page' placement="left">
                     <FontAwesomeIcon icon={faChevronLeft} style={{color: "#677d15", cursor:'pointer'}} onClick={handleChangeOfPagePrevious} />
                 </Tooltip>
-                <PageNumber>{page}</PageNumber>
+                <PageNumber>{page} sur {totalPages}</PageNumber>
                 <Tooltip title='Next page' placement="right">
                     <FontAwesomeIcon icon={faChevronRight} style={{color: "#677d15", cursor:'pointer'}} onClick={handleChangeOfPageForward}/>
                 </Tooltip>
